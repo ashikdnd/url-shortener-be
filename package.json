@@ -9,6 +9,7 @@
   "author": "Ashik",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.21.2",
     "generate-unique-id": "^2.0.3",
     "sqlite3": "^5.1.7"

@@ -1,7 +1,9 @@
 const express = require('express')
+const cors = require('cors')
 const sqlite3 = require('sqlite3').verbose();
 const app = express()
 app.use(express.json());
+app.use(cors())
 const port = 3000
 const generateUniqueId = require('generate-unique-id');
 
@@ -63,6 +65,24 @@ app.get('/:shortId', (req, res) => {
         }
     })
 })
+
+app.get('/fetch/all', (req, res) => {
+    console.log('Fetching all records');
+    // Get all records from the database
+    db.all("SELECT * FROM urls order by id desc", [], (err, results) => {
+        if (err) {
+            console.log('Unable to fetch data');
+            res.status(500).json({ error: 'Unable to fetch data' });
+        } else {
+            if (results && results.length > 0) {
+                res.json(results); // Sending all records as a JSON response
+            } else {
+                res.status(404).json({ message: 'No records found' });
+            }
+        }
+    });
+});
+
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
