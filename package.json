@@ -1,0 +1,16 @@
+{
+  "name": "shortener",
+  "version": "1.0.0",
+  "description": "URL shortener using Express JS and SQLite3",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ashik",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2",
+    "generate-unique-id": "^2.0.3",
+    "sqlite3": "^5.1.7"
+  }
+}
